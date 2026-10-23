@@ -33,7 +33,7 @@ The project consists of two main components:
 ## For Beginner
 Open 'dist' file, there is exe which can run the program directly.
 
-### ⚠️ Why A File Might Be Missing (Common Causes)
+## ⚠️ Why A File Might Be Missing (Common Causes)
 * **Static Snapshot Dependency:** The searcher reads from `file_index.db`, which is a static snapshot. Any files created, renamed, or moved **after** you last ran `file_indexer.exe` will not be found. Re-run the indexer to refresh the snapshot.
 * **Result Query Limit:** By default, the database query might be capped (e.g., `LIMIT 20`) to ensure extreme performance. If a file is the 21st match, it will be hidden.
 * **Permission Blocks:** System-protected files or files currently locked by other applications are intentionally skipped during the indexing phase to prevent program crashes.
