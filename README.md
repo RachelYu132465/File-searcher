@@ -5,10 +5,9 @@
 2. The tool utilizes SQLite's dual fuzzy matching (`LIKE`) to filter results based on both the specified directory path and the keyword.
 
 ### ✅ What It Can Find (Success Scenarios)
-* **Fuzzy Matching:** Searching for `.py` will successfully locate `main.py`; searching for `data` will find both `database.db` and `data.txt`.
-* **Case-Insensitive:** Standard English alphabetical characters are evaluated without case sensitivity.
-* **Directory Support:** Folders are indexed alongside files. You can search for folder names directly.
-* **Recursive Path Coverage:** If you set the search path to `C:\Project`, it will match all files nested deep within its subdirectories (e.g., `C:\Project\A\B\test.txt`).
+*Searching for  **`.py`** => **`main.py`、 `python`**;(Fuzzy Matching)
+* **Case-Insensitive:** 
+* **Directory Support:** You can search for folder names directly.
 
 
 ## Core Logic: B-Tree over NTFS
@@ -40,3 +39,7 @@ Open 'dist' file, there is exe which can run the program directly.
 * **Result Query Limit:** By default, the database query might be capped (e.g., `LIMIT 20`) to ensure extreme performance. If a file is the 21st match, it will be hidden.
 * **Permission Blocks:** System-protected files or files currently locked by other applications are intentionally skipped during the indexing phase to prevent program crashes.
 * **Typographical Errors in Path/Keyword:** Extra trailing spaces in your keyword (e.g., `" .txt"`) or incorrect slash formats in the search path will cause the SQL strict matching to fail.
+
+## Notes
+* Recursive Path Coverage: If you set the search path to `C:\Project`, it will match all files nested deep within its subdirectories (e.g., `C:\Project\A\B\test.txt`).
+* 
