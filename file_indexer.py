@@ -60,13 +60,25 @@ file_count = 0
 error_count = 0
 batch_data = []
 batch_size = 5000  # Batch size for bulk database commits
-
 # Traverse directory tree using os.walk
 for root_dir, dirs, files in os.walk(target_folder):
+
+    # --- 新增：將「資料夾」也錄入資料庫 ---
+    for dirname in dirs:
+        dir_full_path = os.path.join(root_dir, dirname)
+        # 資料夾大小預設設為 0
+        batch_data.append((dirname, dir_full_path, 0))
+        file_count += 1
+
+        if len(batch_data) >= batch_size:
+            cursor.executemany("INSERT INTO files (filename, full_path, file_size) VALUES (?, ?, ?);", batch_data)
+            conn.commit()
+            batch_data.clear()
+
+    # --- 原本的：將「檔案」錄入資料庫 ---
     for filename in files:
         full_path = os.path.join(root_dir, filename)
 
-        # Defensive mechanism against permission errors or locked system files
         try:
             file_size = os.path.getsize(full_path)
         except (PermissionError, OSError):
@@ -76,7 +88,6 @@ for root_dir, dirs, files in os.walk(target_folder):
         batch_data.append((filename, full_path, file_size))
         file_count += 1
 
-        # Perform batch commit when batch size is reached
         if len(batch_data) >= batch_size:
             cursor.executemany("INSERT INTO files (filename, full_path, file_size) VALUES (?, ?, ?);", batch_data)
             conn.commit()

@@ -3,7 +3,7 @@ import sqlite3
 import time
 import tkinter as tk
 from tkinter import simpledialog, messagebox
-
+from tkinter import ttk
 db_name = "file_index.db"
 
 # Hide the main Tkinter root window
@@ -84,15 +84,28 @@ results = cursor.fetchall()
 end_time = time.time()
 conn.close()
 
-# Format and display results in a popup message box
 if not results:
     messagebox.showinfo("Search Results", "No matching files found.")
 else:
     elapsed_ms = (end_time - start_time) * 1000
-    result_text = f"Found {len(results)} results (Query time: {elapsed_ms:.2f} ms):\n\n"
+    txt_filename = "search_results.txt"
 
-    for row in results:
-        size_mb = row[2] / (1024 * 1024)
-        result_text += f"File: {row[0]}\nPath: {row[1]} ({size_mb:.2f} MB)\n" + "-" * 30 + "\n"
+    # 寫入純文字檔
+    with open(txt_filename, "w", encoding="utf-8") as f:
+        f.write(f"Found {len(results)} results (Query time: {elapsed_ms:.2f} ms):\n\n")
+        for row in results:
+            size_mb = row[2] / (1024 * 1024)
+            f.write(f"File: {row[0]}\n")
+            f.write(f"Path: {row[1]}\n")
+            f.write(f"Size: {size_mb:.2f} MB\n")
+            f.write("-" * 50 + "\n")
 
-    messagebox.showinfo("Search Results", result_text)
+    # 彈出視窗告知檔案路徑
+    full_txt_path = os.path.abspath(txt_filename)
+    messagebox.showinfo(
+        "Search Results",
+        f"Found {len(results)} relevant data!\n\nThe results are saved at:\n{full_txt_path}"
+    )
+
+    # (Windows 限定) 自動幫使用者用記事本打開這個 TXT 檔，方便直接複製
+    os.startfile(txt_filename)
