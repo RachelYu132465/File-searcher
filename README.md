@@ -5,8 +5,8 @@
 2. The tool utilizes SQLite's dual fuzzy matching (`LIKE`) to filter results based on both the specified directory path and the keyword.
 
 ### ✅ What It Can Find (Success Scenarios)
-*Searching for  **`.py`** => **`main.py`、 `python`**;(Fuzzy Matching)
-* **Case-Insensitive:** 
+*Searching for  **`.py`** Result=> **`main.py`、 `python`**(Fuzzy Matching);
+* **Case-Insensitive.** 
 * **Directory Support:** You can search for folder names directly.
 
 
