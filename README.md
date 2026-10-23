@@ -12,7 +12,7 @@
 * Open 'dist' file, there is exe which can run the program directly.
   
 ## What It Can Find (Success Scenarios)✅ 
-* Search:**`.py`** Result: **`main.py`、 `python`**(Fuzzy Matching);
+* Search:**`.py`** Result: **`main.py`、 `python`**.
 * **Directory Support:** You can search for folder names directly.
 * **Case-Insensitive.** 
 
@@ -30,7 +30,7 @@ This tool bypasses NTFS entirely during the search phase. `file_indexer` capture
 ## How It Works
 The project consists of two main components:
 1. `file_indexer.exe`: Scans your target directory and builds a snapshot of all files into `file_index.db`.
-2. `searcher.exe`: Reads the database to provide instant fuzzy search results based on your keywords.
+2. `searcher.exe`: Reads the database to provide instant search results based on your keywords.
 
 
 ## Why A File Might Be Missing (Common Causes)⚠️
