@@ -6,7 +6,7 @@
 ## Quick Start
 1. Place `file_indexer.exe`, `searcher.exe`, and `file_index.db` in the same directory.
 2. Run `file_indexer.exe` to select a target folder and build the initial database.
-3. Run `searcher.exe` to instantly find your files, no need to include file extension.
+3. Run  `searcher.exe`:Exports the searching results to a simple **text file** (no file extension required).
 
 ## For Beginner
 * Open 'dist' file, there is exe which can run the program directly.
