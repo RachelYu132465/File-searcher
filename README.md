@@ -21,7 +21,7 @@ The project consists of two main components:
 ## Quick Start
 1. Place `file_indexer.exe`, `searcher.exe`, and `file_index.db` in the same directory.
 2. Run `file_indexer.exe` to select a target folder and build the initial database.
-3. Run `searcher.exe` to instantly find your files.
+3. Run `searcher.exe` to instantly find your files, no need to include file extension.
 
 ## For Beginner
-Open 'dist', there is exe which can run the program directly.
+Open 'dist' file, there is exe which can run the program directly.
