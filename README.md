@@ -1,6 +1,15 @@
 # Ultra-Fast File Searcher ⚡
 
-Improve the efficiency of local file searching. Compared to the native Windows search (the search bar at File Explorer), this tool finds files up to **6x faster**.
+1. Improve the efficiency of local file searching. Compared to the native Windows search (the search bar at File Explorer), this tool finds files up to **6x faster**.
+
+2. The tool utilizes SQLite's dual fuzzy matching (`LIKE`) to filter results based on both the specified directory path and the keyword.
+
+### ✅ What It Can Find (Success Scenarios)
+* **Fuzzy Matching:** Searching for `.py` will successfully locate `main.py`; searching for `data` will find both `database.db` and `data.txt`.
+* **Case-Insensitive:** Standard English alphabetical characters are evaluated without case sensitivity.
+* **Directory Support:** Folders are indexed alongside files. You can search for folder names directly.
+* **Recursive Path Coverage:** If you set the search path to `C:\Project`, it will match all files nested deep within its subdirectories (e.g., `C:\Project\A\B\test.txt`).
+
 
 ## Core Logic: B-Tree over NTFS
 Traditional Windows search relies on real-time traversal of the NTFS file system or the heavy built-in Windows indexer, which can be sluggish and resource-intensive.
@@ -25,3 +34,9 @@ The project consists of two main components:
 
 ## For Beginner
 Open 'dist' file, there is exe which can run the program directly.
+
+### ⚠️ Why A File Might Be Missing (Common Causes)
+* **Static Snapshot Dependency:** The searcher reads from `file_index.db`, which is a static snapshot. Any files created, renamed, or moved **after** you last ran `file_indexer.exe` will not be found. Re-run the indexer to refresh the snapshot.
+* **Result Query Limit:** By default, the database query might be capped (e.g., `LIMIT 20`) to ensure extreme performance. If a file is the 21st match, it will be hidden.
+* **Permission Blocks:** System-protected files or files currently locked by other applications are intentionally skipped during the indexing phase to prevent program crashes.
+* **Typographical Errors in Path/Keyword:** Extra trailing spaces in your keyword (e.g., `" .txt"`) or incorrect slash formats in the search path will cause the SQL strict matching to fail.
