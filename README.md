@@ -4,6 +4,14 @@
 
 2. The tool utilizes SQLite's dual fuzzy matching (`LIKE`) to filter results based on both the specified directory path and the keyword.
 
+## Quick Start
+1. Place `file_indexer.exe`, `searcher.exe`, and `file_index.db` in the same directory.
+2. Run `file_indexer.exe` to select a target folder and build the initial database.
+3. Run `searcher.exe` to instantly find your files, no need to include file extension.
+
+## For Beginner
+* Open 'dist' file, there is exe which can run the program directly.
+  
 ### ✅ What It Can Find (Success Scenarios)
 * Search:**`.py`** Result: **`main.py`、 `python`**(Fuzzy Matching);
 * **Directory Support:** You can search for folder names directly.
@@ -24,14 +32,6 @@ This tool bypasses NTFS entirely during the search phase. `file_indexer` capture
 The project consists of two main components:
 1. `file_indexer.exe`: Scans your target directory and builds a snapshot of all files into `file_index.db`.
 2. `searcher.exe`: Reads the database to provide instant fuzzy search results based on your keywords.
-
-## Quick Start
-1. Place `file_indexer.exe`, `searcher.exe`, and `file_index.db` in the same directory.
-2. Run `file_indexer.exe` to select a target folder and build the initial database.
-3. Run `searcher.exe` to instantly find your files, no need to include file extension.
-
-## For Beginner
-* Open 'dist' file, there is exe which can run the program directly.
 
 
 ## ⚠️ Why A File Might Be Missing (Common Causes)
