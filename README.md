@@ -7,8 +7,8 @@
 1. Place `file_indexer.exe`, `searcher.exe`, and `file_index.db` in the same directory.
 2. Run `file_indexer.exe` to select a target folder and build the initial database.
 3. Run  `searcher.exe`:
-   * Type the path (if you don't remember, just C:\\) 
-   * Type the file name(if you don't remember, just type keyword, and NO file extension required)
+   * Type the path (Can be just C:\\) 
+   * Type the file name(Can be just keyword, and NO file extension required)
    * It exports the searching results to a simple **text file**.
 
 ## For Beginner
