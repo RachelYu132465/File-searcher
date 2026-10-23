@@ -1,4 +1,4 @@
-# Ultra-Fast File Searcher ⚡
+# ⚡Ultra-Fast File Searcher 
 
 1. Improve the efficiency of local file searching. Compared to the native Windows search (the search bar at File Explorer), this tool finds files up to **6x faster**.
 
@@ -31,7 +31,8 @@ The project consists of two main components:
 3. Run `searcher.exe` to instantly find your files, no need to include file extension.
 
 ## For Beginner
-Open 'dist' file, there is exe which can run the program directly.
+* Open 'dist' file, there is exe which can run the program directly.
+
 
 ## ⚠️ Why A File Might Be Missing (Common Causes)
 * **Static Snapshot Dependency:** The searcher reads from `file_index.db`, which is a static snapshot. Any files created, renamed, or moved **after** you last ran `file_indexer.exe` will not be found. Re-run the indexer to refresh the snapshot.
